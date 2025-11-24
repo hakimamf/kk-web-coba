@@ -91,7 +91,7 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background-color: black;
+    /* background-color: black;
     /* background-image: url("../img/hero-bg-1-a.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -99,9 +99,23 @@ body {
     position: relative;
 }
 
+.video-bg-wrapper {
+    position: relative; /* Establishes a positioning context for children */
+    height: 100vh;      /* Makes the wrapper take the full viewport height */
+    width: 100%;
+    overflow: hidden;   /* Hides any overflow from the video scaling */
+}
+
 #hero-video {
+    position: absolute; /* Positions the video relative to its wrapper */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the video */
     min-width: 100%;
-    filter: brightness(77%);
+    min-height: 100%;
+    object-fit: cover; /* Ensures the video covers the entire container while maintaining aspect ratio */
+    z-index: -1; /*keeps the video in the background */
+    filter:brightness(80%);
 }
 
 .hero::after {
@@ -109,25 +123,39 @@ body {
     display: block;
     position: absolute;
     width: 100%;
-    height: 30%;
+    height: 10%;
     bottom: 0;
     background: linear-gradient(0deg, rgba(1,1,3,1) 8%, rgba(255,255,255,0) 25%);
 }
 
 .hero .content {
-    min-height: 100vh;
-    padding-top: 12%;
-    width: 100%;
-    position: absolute;
-    align-self: center;
+    position: relative; /* Keeps content above the video */
+    z-index: 1;         /* Ensures the content is visible */
+    color: white;       /* Adjust text color for readability */
+    padding: 20px;
+    /* Add styles to center or position your content as needed */
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .hero .content h1 {
     font-size: 6em;
     color: var(--secondary);
-    text-shadow: 1px 1px 3px rgba(1,1,3,0.5);
+    text-shadow: 2px 2px 5px rgba(1,1,3,0.5);
     line-height: 1.2;
     text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.hero .content h2 {
+    font-size: 3em;
+    color: var(--secondary);
+    text-shadow: 2px 2px 5px rgba(1,1,3,0.5);
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .hero .content p {
@@ -137,13 +165,13 @@ body {
     line-height: 1.4;
     font-weight: 500;
     text-align: center;
-    text-shadow: 1px 1px 3px rgba(1,1,3,0.5);
+    text-shadow: 2px 2px 5px rgba(1,1,3,0.5);
     color: var(--secondary);
 }
 
 .hero .content .cta {
-    margin-top: 1rem;
-    margin-left: 37%;
+    margin-top: 4rem;
+    /*margin-left: 39%;*/
     display: inline-block;
     padding: 1rem 3rem;
     font-size: 1.5rem;  
